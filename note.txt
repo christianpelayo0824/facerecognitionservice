@@ -1,0 +1,14 @@
+Rest end poits:
+
+-- Career
+-- url - /api/resource/career
+	- GetMapping
+		- /getAllCareerProfile
+	- GeMapping 
+		- /getCareerProfileById/{id}
+	- DeletMapping
+		-/deleteCareerProfileById/{id}
+	- PutMapping
+		- /updateCareerProfile
+	- PostMapping
+		- /createCareerProfile

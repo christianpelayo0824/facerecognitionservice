@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'VaralaRound';
+    src: url('../fonts/VarelaRound-Regular.ttf')
+}
+
+* {
+    font-family: 'VaralaRound';
+}
+
+p {
+    font-size: 14px;
+    letter-spacing: 1px;
+}
