@@ -8,18 +8,14 @@
     <title>Employee Monitoring</title>
 </head>
 
-<body>
-
-    <div class="row">
-        <div class="col-lg-3">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni soluta corporis rerum possimus voluptas quibusdam!
-        </div>
-        <div class="col-lg-9">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis soluta inventore neque deleniti facilis dolorum dolores nisi
-            veritatis consectetur culpa repudiandae accusamus doloribus possimus quam excepturi recusandae alias voluptas
-            sed.
-        </div>
+<body ng-app="app">
+    <div class="container">
+        <ng-view></ng-view>
     </div>
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-route.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/component/login/LoginController.js"></script>
 </body>
 
 </html>

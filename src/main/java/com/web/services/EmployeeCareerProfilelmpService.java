@@ -23,7 +23,6 @@ public class EmployeeCareerProfilelmpService implements EmployeeCareerProfileSer
 	@Override
 	public void createCareerProfile(EmployeeCareerProfile careerProfile) {
 		employeeCareerProfileRepo.save(careerProfile);
-
 	}
 
 	@Override

@@ -37,12 +37,13 @@ public class EmployeePersonalInfoResource {
 		emplService.createEmployee(employee);
 		return true;
 	}
-
+ 
 	// Rest end-point to update data via employee service
 	@PutMapping(value = "/updateEmployee", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean updateEmployee(@RequestBody EmployeePersonalInfo employee) {
 		emplService.updateEmployee(employee);
 		return true;
+
 	}
 
 	// Rest end-point to get employee using id via employee service
@@ -57,4 +58,10 @@ public class EmployeePersonalInfoResource {
 		emplService.deleteStudent(employeeId);
 		return true;
 	}
+
+	@GetMapping(value = "/test")
+	public String isTest() {
+		return "test";
+	}
+
 }

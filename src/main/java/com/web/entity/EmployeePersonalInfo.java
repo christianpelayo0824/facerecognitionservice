@@ -14,21 +14,21 @@ public class EmployeePersonalInfo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "e_id")
+	@Column(name = "e_id", nullable = false)
 	private Integer e_id;
 
-	@Column(name = "firstname")
+	@Column(name = "firstname", nullable = false)
 	@Size(max = 30)
 	private String firstname;
 
-	@Column(name = "lastname")
+	@Column(name = "lastname", nullable = false)
 	@Size(max = 30)
 	private String lastname;
 
-	@Column(name = "phone")
-	private Integer phone;
+	@Column(name = "phone", nullable = false)
+	private Long phone;
 
-	@Column(name = "email")
+	@Column(name = "email", nullable = false)
 	@Size(max = 30)
 	private String email;
 
@@ -59,11 +59,11 @@ public class EmployeePersonalInfo {
 		return this;
 	}
 
-	public Integer getPhone() {
+	public Long getPhone() {
 		return phone;
 	}
 
-	public EmployeePersonalInfo setPhone(Integer phone) {
+	public EmployeePersonalInfo setPhone(Long phone) {
 		this.phone = phone;
 		return this;
 	}
@@ -79,8 +79,8 @@ public class EmployeePersonalInfo {
 
 	@Override
 	public String toString() {
-		return "Employee [e_id=" + e_id + ", firstname=" + firstname + ", lastname=" + lastname + ", phone=" + phone
-				+ ", email=" + email + "]";
+		return "EmployeePersonalInfo [e_id=" + e_id + ", firstname=" + firstname + ", lastname=" + lastname + ", phone="
+				+ phone + ", email=" + email + "]";
 	}
 
 }

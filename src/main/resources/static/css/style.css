@@ -11,3 +11,8 @@ p {
     font-size: 14px;
     letter-spacing: 1px;
 }
+
+/* Navbar */
+#custom-navbar {
+    background-color: red !important;
+}
