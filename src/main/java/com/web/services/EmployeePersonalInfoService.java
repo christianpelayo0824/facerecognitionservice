@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import com.web.entity.EmployeePersonalInfo;
 
-//Employee Interface as a service for database manipulation
+/*
+Employee Interface as a service for database manipulation
+*/
 public interface EmployeePersonalInfoService {
 
 	public List<EmployeePersonalInfo> getAllEmployee();

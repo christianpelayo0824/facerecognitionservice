@@ -7,9 +7,12 @@ import com.web.entity.LoginEmployee;
 
 public interface LoginEmployeeService {
 
-	public Optional<LoginEmployee> getLoginEmployee(int employeeId);
+	public Optional<LoginEmployee> getLoginEmployeeByCostomId(int employeeId);
 
 	public List<LoginEmployee> getAllLoginEmployee();
 
 	public void saveLoginEmployee(LoginEmployee loginEmployee);
+	
+	public void deleteByEmployeeId(int employeeId);
+
 }

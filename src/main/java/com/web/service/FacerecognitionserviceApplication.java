@@ -1,24 +1,39 @@
 package com.web.service;
 
+import java.time.LocalDateTime;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import com.web.entity.EmployeeCareerProfile;
+import com.web.entity.EmployeePersonalInfo;
+import com.web.entity.LoginEmployee;
+import com.web.entity.LogoutEmployee;
+import com.web.repository.LoginEmployeeRepository;
+import com.web.repository.LogoutEmployeeRepository;
+import com.web.services.EmployeeCareerProfileService;
+
 @SpringBootApplication(scanBasePackages = { "com.web" })
 @EnableJpaRepositories(basePackages = { "com.web.repository" })
 @EntityScan(basePackages = { "com.web.entity" })
 public class FacerecognitionserviceApplication implements CommandLineRunner {
 
-	// @Autowired
-	// private EmployeeCareerProfileService empCareerProfileService;
-	//
-	// @Autowired
-	// private LoginEmployeeRepository loginFaceRepo;
-	//
-	// @Autowired
-	// private EmployeeCareerProfileRepository employeeCareerProfileRepo;
+	@Autowired
+	private EmployeeCareerProfileService empCareerProfileService;
+	
+	@Autowired
+	private LogoutEmployeeRepository logoutEmployeeRepo;
+	
+	@Autowired 
+	private LoginEmployeeRepository loginEmployeeRepo;
+
+	static Logger logger = LoggerFactory.getLogger(FacerecognitionserviceApplication.class);
 
 	public static void main(String[] args) {
 		SpringApplication.run(FacerecognitionserviceApplication.class, args);
@@ -26,43 +41,34 @@ public class FacerecognitionserviceApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//
-		// EmployeePersonalInfo empInfo = new EmployeePersonalInfo();
-		// empInfo.setFirstname("Christian").setLastname("Pelayo").setPhone(12345678901L).setEmail("chan@gmail.com");
-		// EmployeeCareerProfile empCareerProfile = new EmployeeCareerProfile();
-		// empCareerProfile.setDepartment("COE").setPosition("CEO").setStation("A").setEmployee_id(12345678)
-		// .setEmployee(empInfo);
-		//
-		// EmployeePersonalInfo empInfo2 = new EmployeePersonalInfo();
-		// empInfo2.setFirstname("Kyra").setLastname("Pelayo").setPhone(12345678901L).setEmail("chan@gmail.com");
-		// EmployeeCareerProfile empCareerProfile2 = new EmployeeCareerProfile();
-		// empCareerProfile2.setDepartment("COE").setPosition("CEO").setStation("A").setEmployee_id(12345677)
-		// .setEmployee(empInfo2);
-		//
-		// empCareerProfileService.createCareerProfile(empCareerProfile2);
-		// empCareerProfileService.createCareerProfile(empCareerProfile);
 
-		// dd-MMM-yy hh.mm.ss.S aa
-		// DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy
-		// hh:mm:ss a");
+		EmployeePersonalInfo empInfo = new EmployeePersonalInfo();
+		empInfo.setFirstname("Christian")
+			.setLastname("Pelayo")
+			.setPhone(12345678901L)
+			.setEmail("chan@gmail.com");
+		
+		EmployeeCareerProfile empCareerProfile = new EmployeeCareerProfile();
+		empCareerProfile.setDepartment("COE")
+			.setPosition("CEO")
+			.setStation("A")
+			.setEmployee_id(12345678)
+			.setEmployee(empInfo);
 
-		// LoginEmployee loginFace = new LoginEmployee();
-		// loginFace.setDateTime(LocalDateTime.now()).setEmployeeId(12345678);
-		// loginFaceRepo.save(loginFace);
-		//
-		// LoginEmployee loginFace2 = new LoginEmployee();
-		// loginFace2.setDateTime(LocalDateTime.now()).setEmployeeId(12345677);
-		// loginFaceRepo.save(loginFace2);
-		//
-		// LoginEmployee loginFace3 = new LoginEmployee();
-		// loginFace3.setDateTime(LocalDateTime.now()).setEmployeeId(12345677);
-		// loginFaceRepo.save(loginFace3);
-		//
-		// LoginEmployee loginFace4 = new LoginEmployee();
-		// loginFace4.setDateTime(LocalDateTime.now()).setEmployeeId(12345677);
-		// loginFaceRepo.save(loginFace4);
-
-		// System.out.println(loginFaceRepo.getLoginEmployeeByCostomId(12345678));
+		empCareerProfileService.createCareerProfile(empCareerProfile);
+		
+		
+		LogoutEmployee logoutEmployee = new LogoutEmployee();
+		logoutEmployee.setDate_time(LocalDateTime.now())
+			.setEmployeeId(12345678);
+		logoutEmployeeRepo.save(logoutEmployee);
+		
+		LoginEmployee loginEmployee= new LoginEmployee();
+		loginEmployee.setDateTime(LocalDateTime.now())
+			.setEmployeeId(12345678);
+		loginEmployeeRepo.save(loginEmployee);
+		
+		// logger.info("ID: " + employeeCareerProfileRepo.getEmployeeIdById(1));
 
 	}
 

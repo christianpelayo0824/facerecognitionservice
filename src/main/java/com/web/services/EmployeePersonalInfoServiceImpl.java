@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import com.web.entity.EmployeePersonalInfo;
 import com.web.repository.EmployeePersonalInfoRepository;
 
-//Employee class with employee service implementation for creating query
+/*
+Employee class with employee service implementation for creating query
+*/
 @Service
 public class EmployeePersonalInfoServiceImpl implements EmployeePersonalInfoService {
 

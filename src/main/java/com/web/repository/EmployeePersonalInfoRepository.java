@@ -5,7 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.web.entity.EmployeePersonalInfo;
 
-//Repository for CRUD operation in Employee entity using JpaRepository library
+/*
+Repository for CRUD operation in Employee entity using JpaRepository library
+*/
 @Repository
 public interface EmployeePersonalInfoRepository extends JpaRepository<EmployeePersonalInfo, Integer> {
 

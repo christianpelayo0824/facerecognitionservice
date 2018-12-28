@@ -41,4 +41,9 @@ public class EmployeeCareerProfilelmpService implements EmployeeCareerProfileSer
 		employeeCareerProfileRepo.deleteById(careerProfileId);
 	}
 
+	@Override
+	public int getEmployeeIdbyId(int id) {
+		return employeeCareerProfileRepo.getEmployeeIdById(id);
+	}
+
 }

@@ -16,7 +16,7 @@ public class LoginEmployeeServiceImpl implements LoginEmployeeService {
 	private LoginEmployeeRepository loginEmployeeRepo;
 
 	@Override
-	public Optional<LoginEmployee> getLoginEmployee(int employeeId) {
+	public Optional<LoginEmployee> getLoginEmployeeByCostomId(int employeeId) {
 		return loginEmployeeRepo.getLoginEmployeeByCostomId(employeeId);
 	}
 
@@ -28,6 +28,12 @@ public class LoginEmployeeServiceImpl implements LoginEmployeeService {
 	@Override
 	public void saveLoginEmployee(LoginEmployee loginEmployee) {
 		loginEmployeeRepo.save(loginEmployee);
+	}
+
+	@Override
+	public void deleteByEmployeeId(int employeeId) {
+		loginEmployeeRepo.deleteByEmployeeId(employeeId);
+
 	}
 
 }

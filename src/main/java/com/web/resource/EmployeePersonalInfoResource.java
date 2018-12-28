@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.web.entity.EmployeePersonalInfo;
 import com.web.services.EmployeePersonalInfoService;
 
-//Rest end-point for employee in JSON format
+/*
+Rest end-point for employee in JSON format
+*/
 @RestController
 @RequestMapping(value = "/api/resource/employee")
 public class EmployeePersonalInfoResource {
@@ -25,20 +27,29 @@ public class EmployeePersonalInfoResource {
 	@Autowired
 	private EmployeePersonalInfoService emplService;
 
-	// Rest end-point to retrieve data via employee service
+	/*
+	 * - READ 
+	 * - Rest end-point to retrieve data via employee service
+	 */
 	@GetMapping(value = "/getAllEmployee", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<EmployeePersonalInfo> getAllEmployee() {
 		return emplService.getAllEmployee();
 	}
 
-	// Rest end-point to create data via employee service
+	/*
+	 * - CREATE 
+	 * - Rest end-point to create data via employee service
+	 */
 	@PostMapping(value = "/createEmployee", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean createEmployee(@RequestBody EmployeePersonalInfo employee) {
 		emplService.createEmployee(employee);
 		return true;
 	}
- 
-	// Rest end-point to update data via employee service
+
+	/*
+	 * - UPDATE 
+	 * - Rest end-point to update data via employee service
+	 */
 	@PutMapping(value = "/updateEmployee", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean updateEmployee(@RequestBody EmployeePersonalInfo employee) {
 		emplService.updateEmployee(employee);
@@ -46,22 +57,23 @@ public class EmployeePersonalInfoResource {
 
 	}
 
-	// Rest end-point to get employee using id via employee service
+	/*
+	 * - READ by id 
+	 * - Rest end-point to get employee using id via employee service
+	 */
 	@GetMapping(value = "/getEmployeeById/{employeeId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Optional<EmployeePersonalInfo> getEmployeeById(@PathVariable("employeeId") final int employeeId) {
 		return (Optional<EmployeePersonalInfo>) emplService.getEmployeeById(employeeId);
 	}
 
-	// Rest end-point to delete data via employee service
+	/*
+	 * - DELETE by id 
+	 * - Rest end-point to delete data via employee service
+	 */
 	@DeleteMapping(value = "/deleteEmployeeById/{employeeId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public boolean deleteEmployeeById(@PathVariable("employeeId") final int employeeId) {
 		emplService.deleteStudent(employeeId);
 		return true;
-	}
-
-	@GetMapping(value = "/test")
-	public String isTest() {
-		return "test";
 	}
 
 }
