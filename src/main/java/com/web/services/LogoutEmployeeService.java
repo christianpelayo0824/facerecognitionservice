@@ -12,4 +12,6 @@ public interface LogoutEmployeeService {
 	public void deleteByEmployeeId(int employeeId);
 
 	public List<LogoutEmployee> getAllLogoutEmployeee();
+	
+	public void saveLogoutEmployee(LogoutEmployee logoutEmployee);
 }

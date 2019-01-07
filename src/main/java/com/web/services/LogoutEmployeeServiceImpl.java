@@ -30,4 +30,9 @@ public class LogoutEmployeeServiceImpl implements LogoutEmployeeService {
 		return logoutEmployeeRepo.findAll();
 	}
 
+	@Override
+	public void saveLogoutEmployee(LogoutEmployee logoutEmployee) {
+		logoutEmployeeRepo.save(logoutEmployee);
+	}
+
 }
