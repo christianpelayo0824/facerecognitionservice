@@ -18,5 +18,6 @@ public interface EmployeeCareerProfileService {
 	public void deleteCareerProfileById(final int careerProfileID);
 	
 	public int getEmployeeIdbyId(int id);
-
+	
+	List<String> getDistinctStation();
 }

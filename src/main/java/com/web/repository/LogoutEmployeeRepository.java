@@ -1,5 +1,6 @@
 package com.web.repository;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -24,12 +25,19 @@ public interface LogoutEmployeeRepository extends JpaRepository<LogoutEmployee, 
 			+ " WHERE t3.employee_id = :employeeId",
 			nativeQuery = true)
 	public Optional<LogoutEmployee> getLogoutEmployeeByCostomId(
+			@Param("employeeId") final int employeeId);
+
+	@Query(value="SELECT date_time FROM logout_employee "
+			+ "WHERE employee_id = :employeeId", 
+			nativeQuery = true)
+	public LocalDateTime getEmpLogoutDateTimeById(
 				@Param("employeeId") final int employeeId
 			);
-
+	
 	/*
 	 * JPA transaction in getting employee_id using primary id
-	 */ 
+	 */
 	@Transactional
-	public void deleteByEmployeeId(int employeeId);
+	public void deleteByEmployeeId(int employeeId);	
+	
 }

@@ -1,5 +1,7 @@
 package com.web.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -17,4 +19,7 @@ public interface EmployeeCareerProfileRepository extends JpaRepository<EmployeeC
 	@Query(value = "SELECT employee_id FROM job_description t1 JOIN employee "
 			+ "t2 ON t1.id = t2.e_id WHERE t1.id = :id", nativeQuery = true)
 	public int getEmployeeIdById(@Param("id") final int id);
+
+	@Query(value = "SELECT DISTINCT station FROM job_description", nativeQuery = true)
+	List<String> getDistinctStation();
 }

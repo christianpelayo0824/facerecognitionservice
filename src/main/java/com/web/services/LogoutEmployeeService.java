@@ -1,5 +1,6 @@
 package com.web.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,4 +15,6 @@ public interface LogoutEmployeeService {
 	public List<LogoutEmployee> getAllLogoutEmployeee();
 	
 	public void saveLogoutEmployee(LogoutEmployee logoutEmployee);
+	
+	public LocalDateTime getEmpLogoutDateTimeById(int employeeId);
 }

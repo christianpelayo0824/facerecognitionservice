@@ -49,5 +49,12 @@ public class LoginEmployeeResource {
 		loginEmployeeService.saveLoginEmployee(loginEmployee);
 		return true;
 	}
+	
+	@GetMapping(value="/getEmpLoginDateTimeById/{employeeId}",produces = MediaType.APPLICATION_JSON_VALUE)
+	public LocalDateTime getEmpLoginDateTimeById(@PathVariable("employeeId") final int employeeId) {
+		return loginEmployeeService.getEmpLoginDateTimeById(employeeId);
+	}
+	
+	
 
 }

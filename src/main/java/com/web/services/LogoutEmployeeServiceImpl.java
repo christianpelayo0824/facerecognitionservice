@@ -1,5 +1,6 @@
 package com.web.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +34,11 @@ public class LogoutEmployeeServiceImpl implements LogoutEmployeeService {
 	@Override
 	public void saveLogoutEmployee(LogoutEmployee logoutEmployee) {
 		logoutEmployeeRepo.save(logoutEmployee);
+	}
+
+	@Override
+	public LocalDateTime getEmpLogoutDateTimeById(int employeeId) {
+		return logoutEmployeeRepo.getEmpLogoutDateTimeById(employeeId);
 	}
 
 }

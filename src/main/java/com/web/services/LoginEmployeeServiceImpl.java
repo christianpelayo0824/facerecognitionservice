@@ -1,5 +1,6 @@
 package com.web.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +35,11 @@ public class LoginEmployeeServiceImpl implements LoginEmployeeService {
 	public void deleteByEmployeeId(int employeeId) {
 		loginEmployeeRepo.deleteByEmployeeId(employeeId);
 
+	}
+
+	@Override
+	public LocalDateTime getEmpLoginDateTimeById(int employeeId) {
+		return loginEmployeeRepo.getEmpLoginDateTimeById(employeeId);
 	}
 
 }

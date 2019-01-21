@@ -46,4 +46,9 @@ public class EmployeeCareerProfilelmpService implements EmployeeCareerProfileSer
 		return employeeCareerProfileRepo.getEmployeeIdById(id);
 	}
 
+	@Override
+	public List<String> getDistinctStation() {
+		return employeeCareerProfileRepo.getDistinctStation();
+	}
+
 }
