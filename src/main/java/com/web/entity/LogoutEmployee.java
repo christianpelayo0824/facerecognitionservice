@@ -26,6 +26,12 @@ public class LogoutEmployee {
 	@Column(name = "employee_id")
 	private int employeeId;
 
+	@Column(name = "status")
+	private String status;
+
+	@Column(name = "physical_station")
+	private String physicalStation;
+
 	@OneToOne
 	@JoinColumn(name = "employee_id", referencedColumnName = "employee_id", insertable = false, updatable = false)
 	private EmployeeCareerProfile employeeCareerProfile;
@@ -61,8 +67,26 @@ public class LogoutEmployee {
 		return employeeCareerProfile;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public LogoutEmployee setStatus(String status) {
+		this.status = status;
+		return this;
+	}
+
 	public LogoutEmployee setEmployeeCareerProfile(EmployeeCareerProfile employeeCareerProfile) {
 		this.employeeCareerProfile = employeeCareerProfile;
+		return this;
+	}
+
+	public String getPhysicalStation() {
+		return physicalStation;
+	}
+
+	public LogoutEmployee setPhysicalStation(String physicalStation) {
+		this.physicalStation = physicalStation;
 		return this;
 	}
 

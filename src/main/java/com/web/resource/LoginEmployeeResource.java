@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,7 @@ import com.web.entity.LoginEmployee;
 import com.web.services.LoginEmployeeService;
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/api/resource/loginEmployee")
 public class LoginEmployeeResource {
 
@@ -36,7 +38,7 @@ public class LoginEmployeeResource {
 	 * - READ all - Rest end-point in retrieving all LoginEmployee
 	 */
 	@GetMapping(value = "/getAllLoginEmployee", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<LoginEmployee> getAllLoginEmployee() {	
+	public List<LoginEmployee> getAllLoginEmployee() {
 		return loginEmployeeService.getAllLoginEmployee();
 	}
 
@@ -49,12 +51,16 @@ public class LoginEmployeeResource {
 		loginEmployeeService.saveLoginEmployee(loginEmployee);
 		return true;
 	}
-	
-	@GetMapping(value="/getEmpLoginDateTimeById/{employeeId}",produces = MediaType.APPLICATION_JSON_VALUE)
+
+	@GetMapping(value = "/getEmpLoginDateTimeById/{employeeId}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public LocalDateTime getEmpLoginDateTimeById(@PathVariable("employeeId") final int employeeId) {
 		return loginEmployeeService.getEmpLoginDateTimeById(employeeId);
 	}
-	
-	
+
+	@GetMapping(value = "/getLoginEmployeeByStation/{physicalStation}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<LoginEmployee> getLoginEmployeeByStation(
+			@PathVariable("physicalStation") final String physicalStation) {
+		return loginEmployeeService.getLoginEmployeeByStation(physicalStation);
+	}
 
 }

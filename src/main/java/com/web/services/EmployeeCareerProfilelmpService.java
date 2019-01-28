@@ -51,4 +51,9 @@ public class EmployeeCareerProfilelmpService implements EmployeeCareerProfileSer
 		return employeeCareerProfileRepo.getDistinctStation();
 	}
 
+	@Override
+	public List<EmployeeCareerProfile> getCareerProfileByStation(String station) {
+		return employeeCareerProfileRepo.findByStation(station);
+	}
+
 }

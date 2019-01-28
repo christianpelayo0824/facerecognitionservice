@@ -42,4 +42,9 @@ public class LoginEmployeeServiceImpl implements LoginEmployeeService {
 		return loginEmployeeRepo.getEmpLoginDateTimeById(employeeId);
 	}
 
+	@Override
+	public List<LoginEmployee> getLoginEmployeeByStation(String physicalStation) {
+		return loginEmployeeRepo.getLoginEmployeeByStation(physicalStation);
+	}
+
 }

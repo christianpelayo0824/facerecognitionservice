@@ -1,6 +1,7 @@
 package com.web.repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -27,6 +28,15 @@ public interface LoginEmployeeRepository extends JpaRepository<LoginEmployee, In
 				@Param("employeeId") final int employeeId
 			);
 	
+	@Query(value = "SELECT * FROM employee t1 JOIN job_description t2"
+			+ " ON t1.e_id = t2.id JOIN login_employee t3"
+			+ " ON t2.employee_id = t3.employee_id"
+			+ " WHERE t3.physical_station = :physical_station",
+			nativeQuery = true)
+	public List<LoginEmployee> getLoginEmployeeByStation(
+				@Param("physical_station") final String physicalStation
+			);
+	
 	
 	@Query(value="SELECT MAX(date_time) FROM login_employee "
 			+ "WHERE employee_id = :employeeId", 
@@ -40,6 +50,8 @@ public interface LoginEmployeeRepository extends JpaRepository<LoginEmployee, In
 	 */ 
 	@Transactional
 	public void deleteByEmployeeId(int employeeId);
+	
+	
 	
 
 	

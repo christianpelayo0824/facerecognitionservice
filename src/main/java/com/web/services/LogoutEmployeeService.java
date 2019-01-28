@@ -8,13 +8,17 @@ import com.web.entity.LogoutEmployee;
 
 public interface LogoutEmployeeService {
 
-	public Optional<LogoutEmployee> getLogoutEmployeeByCostomId(int employeeId);
+	Optional<LogoutEmployee> getLogoutEmployeeByCostomId(int employeeId);
 
-	public void deleteByEmployeeId(int employeeId);
+	void deleteByEmployeeId(int employeeId);
 
-	public List<LogoutEmployee> getAllLogoutEmployeee();
-	
-	public void saveLogoutEmployee(LogoutEmployee logoutEmployee);
-	
-	public LocalDateTime getEmpLogoutDateTimeById(int employeeId);
+	List<LogoutEmployee> getAllLogoutEmployeee();
+
+	void saveLogoutEmployee(LogoutEmployee logoutEmployee);
+
+	LocalDateTime getEmpLogoutDateTimeById(int employeeId);
+
+	LocalDateTime getLatestLogoutLocalDateTime();
+
+	LogoutEmployee getLatestLogoutEmployee();
 }

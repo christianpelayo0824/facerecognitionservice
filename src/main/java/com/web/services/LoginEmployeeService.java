@@ -8,14 +8,16 @@ import com.web.entity.LoginEmployee;
 
 public interface LoginEmployeeService {
 
-	public Optional<LoginEmployee> getLoginEmployeeByCostomId(int employeeId);
+	Optional<LoginEmployee> getLoginEmployeeByCostomId(int employeeId);
 
-	public List<LoginEmployee> getAllLoginEmployee();
+	List<LoginEmployee> getAllLoginEmployee();
 
-	public void saveLoginEmployee(LoginEmployee loginEmployee);
-	
-	public void deleteByEmployeeId(int employeeId);
-	
-	public LocalDateTime getEmpLoginDateTimeById(int employeeId);
+	void saveLoginEmployee(LoginEmployee loginEmployee);
+
+	void deleteByEmployeeId(int employeeId);
+
+	LocalDateTime getEmpLoginDateTimeById(int employeeId);
+
+	List<LoginEmployee> getLoginEmployeeByStation(String physicalStation);
 
 }

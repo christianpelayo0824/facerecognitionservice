@@ -26,6 +26,9 @@ public class LoginEmployee {
 	@Column(name = "date_time")
 	private LocalDateTime dateTime;
 
+	@Column(name = "physical_station")
+	private String physicalStation;
+
 	@OneToOne()
 	@JoinColumn(name = "employee_id", referencedColumnName = "employee_id", insertable = false, updatable = false)
 	private EmployeeCareerProfile empCareerProfile;
@@ -65,10 +68,19 @@ public class LoginEmployee {
 		return this;
 	}
 
+	public String getPhysicalStation() {
+		return physicalStation;
+	}
+
+	public LoginEmployee setPhysicalStation(String physicalStation) {
+		this.physicalStation = physicalStation;
+		return this;
+	}
+
 	@Override
 	public String toString() {
-		return "LoginFace [id=" + id + ", employeeId=" + employeeId + ", dateTime=" + dateTime + ", empCareerProfile="
-				+ empCareerProfile + "]";
+		return "LoginEmployee [id=" + id + ", employeeId=" + employeeId + ", dateTime=" + dateTime
+				+ ", physicalStation=" + physicalStation + ", empCareerProfile=" + empCareerProfile + "]";
 	}
 
 }

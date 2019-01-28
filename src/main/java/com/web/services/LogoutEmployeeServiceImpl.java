@@ -41,4 +41,14 @@ public class LogoutEmployeeServiceImpl implements LogoutEmployeeService {
 		return logoutEmployeeRepo.getEmpLogoutDateTimeById(employeeId);
 	}
 
+	@Override
+	public LocalDateTime getLatestLogoutLocalDateTime() {
+		return logoutEmployeeRepo.getLatestLogoutLocalDateTime();
+	}
+
+	@Override
+	public LogoutEmployee getLatestLogoutEmployee() {
+		return logoutEmployeeRepo.getLatestLogoutEmployee();
+	}
+
 }

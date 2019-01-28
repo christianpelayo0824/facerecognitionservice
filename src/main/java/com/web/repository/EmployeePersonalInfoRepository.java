@@ -11,4 +11,5 @@ Repository for CRUD operation in Employee entity using JpaRepository library
 @Repository
 public interface EmployeePersonalInfoRepository extends JpaRepository<EmployeePersonalInfo, Integer> {
 
+	
 }
