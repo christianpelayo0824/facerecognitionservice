@@ -16,12 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.web.entity.LoginEmployee;
 import com.web.services.LoginEmployeeService;
+import com.web.services.StationService;
 
 @RestController
 @CrossOrigin
 @RequestMapping(value = "/api/resource/loginEmployee")
 public class LoginEmployeeResource {
 
+	@Autowired StationService stationService;
+	
 	@Autowired
 	private LoginEmployeeService loginEmployeeService;
 
@@ -47,9 +50,17 @@ public class LoginEmployeeResource {
 	 */
 	@PostMapping(value = "/saveLoginEmployee", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean saveLoginEmployee(@RequestBody LoginEmployee loginEmployee) {
-		loginEmployee.setDateTime(LocalDateTime.now());
-		loginEmployeeService.saveLoginEmployee(loginEmployee);
-		return true;
+		boolean status = false;
+		
+		if(stationService.isExistsEmployee(loginEmployee.getEmployeeId(), loginEmployee.getPhysicalStation()) == true) {
+			loginEmployee.setDateTime(LocalDateTime.now());
+			loginEmployeeService.saveLoginEmployee(loginEmployee);
+			status = true;
+		}else {
+			status = false;
+		}
+		
+		return status;
 	}
 
 	@GetMapping(value = "/getEmpLoginDateTimeById/{employeeId}", produces = MediaType.APPLICATION_JSON_VALUE)

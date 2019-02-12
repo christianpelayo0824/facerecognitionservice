@@ -108,7 +108,6 @@ public class EmployeeCareerProfileResource {
 		return stationList;
 	}
 
-	@CrossOrigin
 	@GetMapping(value = "/getCareerProfileByStation/{station}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<EmployeeCareerProfile> getCareerProfileByStation(@PathVariable("station") final String station) {
 		return employeeCareerProfileService.getCareerProfileByStation(station);
