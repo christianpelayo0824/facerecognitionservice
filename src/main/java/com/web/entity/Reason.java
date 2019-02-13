@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +23,10 @@ public class Reason {
 	private String reason;
 
 	private LocalDateTime localDateTime;
+
+	@OneToOne()
+	@JoinColumn(name = "employeeId", referencedColumnName = "employee_id", insertable = false, updatable = false)
+	private EmployeeCareerProfile empCareerProfile;
 
 	public int getId() {
 		return id;
@@ -55,6 +61,15 @@ public class Reason {
 
 	public Reason setLocalDateTime(LocalDateTime localDateTime) {
 		this.localDateTime = localDateTime;
+		return this;
+	}
+
+	public EmployeeCareerProfile getEmpCareerProfile() {
+		return empCareerProfile;
+	}
+
+	public Reason setEmpCareerProfile(EmployeeCareerProfile empCareerProfile) {
+		this.empCareerProfile = empCareerProfile;
 		return this;
 	}
 

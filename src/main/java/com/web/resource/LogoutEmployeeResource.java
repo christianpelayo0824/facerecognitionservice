@@ -17,6 +17,7 @@ import com.web.entity.Reason;
 import com.web.services.LoginEmployeeService;
 import com.web.services.LogoutEmployeeService;
 import com.web.services.ReasonService;
+import com.web.services.StationService;
 
 @RestController
 @CrossOrigin
@@ -31,6 +32,9 @@ public class LogoutEmployeeResource {
 
 	@Autowired
 	private ReasonService reasonService;
+
+	@Autowired
+	private StationService stationService;
 
 	/*
 	 * - READ all employee from logout mode
@@ -56,47 +60,47 @@ public class LogoutEmployeeResource {
 	@PostMapping(value = "/currentTimeGap", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean currentTimeGapStatus(@RequestBody final LogoutEmployee logoutEmployee) {
 
-		// LogoutEmployee logoutEmployee = new LogoutEmployee();
-
-		Reason reason = new Reason();
-
 		boolean status = false;
 
-		if (loginEmployeeService.getEmpLoginDateTimeById(logoutEmployee.getEmployeeId())
-				.getDayOfMonth() == LocalDateTime.now().getDayOfMonth()) {
-			if ((LocalDateTime.now().getHour()
-					- loginEmployeeService.getEmpLoginDateTimeById(logoutEmployee.getEmployeeId()).getHour()) <= 8) {
+		if (stationService.isExistsEmployee(logoutEmployee.getEmployeeId(), logoutEmployee.getPhysicalStation())) {
+			Reason reason = new Reason();
+			if (loginEmployeeService.getEmpLoginDateTimeById(logoutEmployee.getEmployeeId())
+					.getDayOfMonth() == LocalDateTime.now().getDayOfMonth()) {
+				if ((LocalDateTime.now().getHour() - loginEmployeeService
+						.getEmpLoginDateTimeById(logoutEmployee.getEmployeeId()).getHour()) <= 8) {
 
-				/*
-				 * Save the logout employee
-				 * 
-				 */
-				logoutEmployee.setEmployeeId(logoutEmployee.getEmployeeId()).setDate_time(LocalDateTime.now())
-						.setStatus("--- UNDER_TIME ---").setPhysicalStation(logoutEmployee.getPhysicalStation());
-				logoutEmployeeService.saveLogoutEmployee(logoutEmployee);
+					/*
+					 * Save the logout employee
+					 *
+					 */
+					logoutEmployee.setEmployeeId(logoutEmployee.getEmployeeId()).setDate_time(LocalDateTime.now())
+							.setStatus("--- UNDER_TIME---").setPhysicalStation(logoutEmployee.getPhysicalStation());
+					logoutEmployeeService.saveLogoutEmployee(logoutEmployee);
 
-				status = true;
-			} else {
-				/*
-				 * Set reason if the current timestamp is greater than or equals 8 hours with
-				 * the assign reason
-				 */
-				reason.setEmployeeId(logoutEmployee.getEmployeeId()).setReason("--- IN TIME ---")
-						.setLocalDateTime(LocalDateTime.now());
-				reasonService.saveReason(reason);
-				/*
-				 * Save the logout employee
-				 * 
-				 */
-				logoutEmployee.setEmployeeId(logoutEmployee.getEmployeeId()).setDate_time(LocalDateTime.now())
-						.setStatus("--- IN TIME ---").setPhysicalStation(logoutEmployee.getPhysicalStation());
-				logoutEmployeeService.saveLogoutEmployee(logoutEmployee);
-
-				status = false;
-
+				} else {
+					/*
+					 * Set reason if the current timestamp is greater than or equals 8 hours with
+					 * the assign reason
+					 */
+					reason.setEmployeeId(logoutEmployee.getEmployeeId()).setReason("--- IN TIME---")
+							.setLocalDateTime(LocalDateTime.now());
+					reasonService.saveReason(reason);
+					/*
+					 * Save the logout employee
+					 *
+					 */
+					logoutEmployee.setEmployeeId(logoutEmployee.getEmployeeId()).setDate_time(LocalDateTime.now())
+							.setStatus("--- IN TIME---").setPhysicalStation(logoutEmployee.getPhysicalStation());
+					logoutEmployeeService.saveLogoutEmployee(logoutEmployee);
+				}
 			}
+			status = true;
+		} else {
+			status = false;
 		}
+
 		return status;
+
 	}
 
 	/*
