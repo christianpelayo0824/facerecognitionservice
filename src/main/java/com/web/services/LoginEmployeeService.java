@@ -19,5 +19,7 @@ public interface LoginEmployeeService {
 	LocalDateTime getEmpLoginDateTimeById(int employeeId);
 
 	List<LoginEmployee> getLoginEmployeeByStation(String physicalStation);
+	
+	int countAllLoginEmployeeByStation(String station);
 
 }

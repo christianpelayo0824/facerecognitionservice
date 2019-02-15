@@ -56,4 +56,9 @@ public class EmployeeCareerProfilelmpService implements EmployeeCareerProfileSer
 		return employeeCareerProfileRepo.findByStation(station);
 	}
 
+	@Override
+	public int countAllEmployee(String station) {
+		return employeeCareerProfileRepo.countAllEmployee(station);
+	}
+
 }

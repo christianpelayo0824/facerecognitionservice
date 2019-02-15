@@ -22,4 +22,7 @@ public interface EmployeeCareerProfileService {
 	List<String> getDistinctStation();
 
 	List<EmployeeCareerProfile> getCareerProfileByStation(String station);
+	
+	int countAllEmployee(String station);
+
 }

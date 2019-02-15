@@ -27,4 +27,8 @@ public interface EmployeeCareerProfileRepository extends JpaRepository<EmployeeC
 
 	@Transactional
 	List<EmployeeCareerProfile> findByStation(String station);
+	
+	@Query(value = "SELECT COUNT(*) FROM employee t1 JOIN job_description t2 ON "
+			+ "t1.e_id = t2.id WHERE t2.station = :station", nativeQuery = true)
+	int countAllEmployee(@Param("station") final String station);
 }

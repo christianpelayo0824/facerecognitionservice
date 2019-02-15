@@ -15,6 +15,14 @@ import com.web.entity.LoginEmployee;
 
 @Repository
 public interface LoginEmployeeRepository extends JpaRepository<LoginEmployee, Integer> {
+	
+	
+	@Query(value = "SELECT COUNT(*) FROM employee t1 JOIN job_description t2 ON "
+			+ "t1.e_id = t2.id JOIN login_employee t3 ON t2.employee_id = t3.employee_id "
+			+ "WHERE t3.physical_station = :station", nativeQuery = true)
+	int countAllLoginEmployeeByStation(@Param("station") final String station);
+	
+	
 	/*
 	 * Native Query for getting relation of the table employee, job_description if
 	 * they are relation with the active login employee_id in table login_face.

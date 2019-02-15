@@ -47,4 +47,9 @@ public class LoginEmployeeServiceImpl implements LoginEmployeeService {
 		return loginEmployeeRepo.getLoginEmployeeByStation(physicalStation);
 	}
 
+	@Override
+	public int countAllLoginEmployeeByStation(String station) {
+		return loginEmployeeRepo.countAllLoginEmployeeByStation(station);
+	}
+
 }

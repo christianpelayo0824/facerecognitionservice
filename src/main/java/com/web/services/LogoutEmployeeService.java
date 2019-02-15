@@ -21,4 +21,6 @@ public interface LogoutEmployeeService {
 	LocalDateTime getLatestLogoutLocalDateTime();
 
 	LogoutEmployee getLatestLogoutEmployee();
+	
+	int countAllLogoutEmployeeByStation(String station);
 }

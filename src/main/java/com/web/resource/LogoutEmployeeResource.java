@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -113,5 +114,10 @@ public class LogoutEmployeeResource {
 		reason.setEmployeeId(logoutEmployee.getEmployeeId()).setLocalDateTime(logoutEmployee.getDate_time());
 		reasonService.saveReason(reason);
 		return true;
+	}
+
+	@GetMapping(value = "/countAllLogoutEmployeeByStation/{station}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public int countAllLogoutEmployeeByStation(@PathVariable("station") final String station) {
+		return logoutEmployeeService.countAllLogoutEmployeeByStation(station);
 	}
 }

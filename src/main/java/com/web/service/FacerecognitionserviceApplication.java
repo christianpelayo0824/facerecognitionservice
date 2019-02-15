@@ -9,7 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import com.web.entity.Station;
 import com.web.services.StationService;
 
 @SpringBootApplication(scanBasePackages = { "com.web" })
@@ -28,9 +27,6 @@ public class FacerecognitionserviceApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-
-		// stationService.saveStation(new
-		// Station().setEmployeeId(12345678).setStation("B"));
 	}
 
 }

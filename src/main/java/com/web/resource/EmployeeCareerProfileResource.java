@@ -101,7 +101,6 @@ public class EmployeeCareerProfileResource {
 
 		int counter = 0;
 		for (String station : employeeCareerProfileService.getDistinctStation()) {
-			System.out.println(station);
 			stationList.add(new StationHelper().setSid(counter).setStation(station));
 			counter++;
 		}
@@ -113,4 +112,8 @@ public class EmployeeCareerProfileResource {
 		return employeeCareerProfileService.getCareerProfileByStation(station);
 	}
 
+	@GetMapping(value = "/countAllEmployee/{station}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public int countAllEmployee(@PathVariable("station") final String station) {
+		return employeeCareerProfileService.countAllEmployee(station);
+	}
 }

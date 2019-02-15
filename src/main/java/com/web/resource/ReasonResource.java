@@ -28,7 +28,6 @@ public class ReasonResource {
 
 	@GetMapping(value = "/getReasonStatusById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Reason> getReasonStatusById(@PathVariable("id") final int id) {
-		System.out.println("HIT");
 		return reasonService.getReasonStatusById(id);
 	}
 

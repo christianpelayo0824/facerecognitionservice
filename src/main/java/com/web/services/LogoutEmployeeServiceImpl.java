@@ -51,4 +51,9 @@ public class LogoutEmployeeServiceImpl implements LogoutEmployeeService {
 		return logoutEmployeeRepo.getLatestLogoutEmployee();
 	}
 
+	@Override
+	public int countAllLogoutEmployeeByStation(String station) {
+		return logoutEmployeeRepo.countAllLogoutEmployeeByStation(station);
+	}
+
 }

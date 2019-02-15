@@ -23,8 +23,9 @@ import com.web.services.StationService;
 @RequestMapping(value = "/api/resource/loginEmployee")
 public class LoginEmployeeResource {
 
-	@Autowired StationService stationService;
-	
+	@Autowired
+	StationService stationService;
+
 	@Autowired
 	private LoginEmployeeService loginEmployeeService;
 
@@ -51,15 +52,16 @@ public class LoginEmployeeResource {
 	@PostMapping(value = "/saveLoginEmployee", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean saveLoginEmployee(@RequestBody LoginEmployee loginEmployee) {
 		boolean status = false;
-		
-		if(stationService.isExistsEmployee(loginEmployee.getEmployeeId(), loginEmployee.getPhysicalStation()) == true) {
+
+		if (stationService.isExistsEmployee(loginEmployee.getEmployeeId(),
+				loginEmployee.getPhysicalStation()) == true) {
 			loginEmployee.setDateTime(LocalDateTime.now());
 			loginEmployeeService.saveLoginEmployee(loginEmployee);
 			status = true;
-		}else {
+		} else {
 			status = false;
 		}
-		
+
 		return status;
 	}
 
@@ -72,6 +74,11 @@ public class LoginEmployeeResource {
 	public List<LoginEmployee> getLoginEmployeeByStation(
 			@PathVariable("physicalStation") final String physicalStation) {
 		return loginEmployeeService.getLoginEmployeeByStation(physicalStation);
+	}
+
+	@GetMapping(value = "/countAllLoginEmployeeByStation/{station}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public int countAllLoginEmployeeByStation(@PathVariable("station") final String station) {
+		return loginEmployeeService.countAllLoginEmployeeByStation(station);
 	}
 
 }
