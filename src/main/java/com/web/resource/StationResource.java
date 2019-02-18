@@ -27,7 +27,7 @@ public class StationResource {
 	@PostMapping(value = "/saveStation", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public boolean saveStation(@RequestBody Station station) {
 		boolean status = false;
-		if(stationService.isExistsEmployee(station.getEmployeeId(), station.getStation()) != true) {
+		if (stationService.isExistsEmployee(station.getEmployeeId(), station.getStation()) != true) {
 			stationService.saveStation(station);
 			status = true;
 		}
@@ -44,9 +44,10 @@ public class StationResource {
 		stationService.deleteStationById(employeeId);
 		return true;
 	}
-	
+
 	@DeleteMapping(value = "/deleteEmployeeFromStation/{employeeId}/{station}")
-	public boolean deleteEmployeeFromStation(@PathVariable("employeeId") final int employeeId, @PathVariable("station") final String station) {
+	public boolean deleteEmployeeFromStation(@PathVariable("employeeId") final int employeeId,
+			@PathVariable("station") final String station) {
 		stationService.deleteEmployeeFromStation(employeeId, station);
 		return true;
 	}
@@ -55,15 +56,20 @@ public class StationResource {
 	public boolean isExistsByEmployeeId(@PathVariable("employeeId") final int employeeId) {
 		return stationService.isExistsByEmployeeId(employeeId);
 	}
-	
+
 	@GetMapping(value = "/isExistsEmployee/{employeeId}/{station}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public boolean isExistsEmployee(@PathVariable("employeeId") final int employeeId, @PathVariable("station") final String station) {
+	public boolean isExistsEmployee(@PathVariable("employeeId") final int employeeId,
+			@PathVariable("station") final String station) {
 		return stationService.isExistsEmployee(employeeId, station);
 	}
-	
+
 	@GetMapping(value = "/getCareerProfileByStation/{station}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Station> getCareerProfileByStation(@PathVariable("station") final String station) {
 		return stationService.getCareerProfileByStation(station);
 	}
 
+	@GetMapping(value = "/countEmployeeByStation/{station}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public int countEmployeeByStation(@PathVariable("station") final String station) {
+		return stationService.countEmployeeByStation(station);
+	}
 }

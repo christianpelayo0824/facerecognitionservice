@@ -116,8 +116,14 @@ public class LogoutEmployeeResource {
 		return true;
 	}
 
+	@GetMapping(value = "/findByPhysicalStation/{physicalStation}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<LogoutEmployee> findByPhysicalStation(@PathVariable("physicalStation") final String physicalStation) {
+		return logoutEmployeeService.findByPhysicalStation(physicalStation);
+	}
+
 	@GetMapping(value = "/countAllLogoutEmployeeByStation/{station}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public int countAllLogoutEmployeeByStation(@PathVariable("station") final String station) {
 		return logoutEmployeeService.countAllLogoutEmployeeByStation(station);
 	}
+
 }

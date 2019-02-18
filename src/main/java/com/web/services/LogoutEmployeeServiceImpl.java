@@ -52,6 +52,11 @@ public class LogoutEmployeeServiceImpl implements LogoutEmployeeService {
 	}
 
 	@Override
+	public List<LogoutEmployee> findByPhysicalStation(String physicalStation) {
+		return logoutEmployeeRepo.findByPhysicalStation(physicalStation);
+	}
+
+	@Override
 	public int countAllLogoutEmployeeByStation(String station) {
 		return logoutEmployeeRepo.countAllLogoutEmployeeByStation(station);
 	}

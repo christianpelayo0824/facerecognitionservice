@@ -70,10 +70,14 @@ public class LoginEmployeeResource {
 		return loginEmployeeService.getEmpLoginDateTimeById(employeeId);
 	}
 
-	@GetMapping(value = "/getLoginEmployeeByStation/{physicalStation}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<LoginEmployee> getLoginEmployeeByStation(
-			@PathVariable("physicalStation") final String physicalStation) {
-		return loginEmployeeService.getLoginEmployeeByStation(physicalStation);
+	@GetMapping(value = "/findByPhysicalStation/{physicalStation}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<LoginEmployee> findByPhysicalStation(@PathVariable("physicalStation") final String physicalStation) {
+		/*
+		 * for (LoginEmployee loginEmployee :
+		 * loginEmployeeService.findByPhysicalStation("A")) {
+		 * System.out.println(loginEmployee.getDateTime()); }
+		 */
+		return loginEmployeeService.findByPhysicalStation(physicalStation);
 	}
 
 	@GetMapping(value = "/countAllLoginEmployeeByStation/{station}", produces = MediaType.APPLICATION_JSON_VALUE)

@@ -43,8 +43,8 @@ public class LoginEmployeeServiceImpl implements LoginEmployeeService {
 	}
 
 	@Override
-	public List<LoginEmployee> getLoginEmployeeByStation(String physicalStation) {
-		return loginEmployeeRepo.getLoginEmployeeByStation(physicalStation);
+	public List<LoginEmployee> findByPhysicalStation(String physicalStation) {
+		return loginEmployeeRepo.findByPhysicalStation(physicalStation);
 	}
 
 	@Override

@@ -50,4 +50,9 @@ public class StationServiceImpl implements StationService {
 		
 	}
 
+	@Override
+	public int countEmployeeByStation(String station) {
+		return stationRepo.countEmployeeByStation(station);
+	}
+
 }

@@ -19,5 +19,7 @@ public interface StationService {
 	List<Station> getCareerProfileByStation(String station);
 	
 	void deleteEmployeeFromStation(int employeeId, String station);
+	
+	int countEmployeeByStation(String station);
 
 }

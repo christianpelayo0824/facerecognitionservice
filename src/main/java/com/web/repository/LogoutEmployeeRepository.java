@@ -1,6 +1,7 @@
 package com.web.repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -14,7 +15,6 @@ import com.web.entity.LogoutEmployee;
 
 @Repository
 public interface LogoutEmployeeRepository extends JpaRepository<LogoutEmployee, Integer> {
-
 	
 	@Query(value = "SELECT COUNT(*) FROM employee t1 JOIN job_description t2 ON "
 			+ "t1.e_id = t2.id JOIN logout_employee t3 ON t2.employee_id = t3.employee_id "
@@ -60,4 +60,5 @@ public interface LogoutEmployeeRepository extends JpaRepository<LogoutEmployee, 
 	@Transactional
 	public void deleteByEmployeeId(int employeeId);
 
+	List<LogoutEmployee> findByPhysicalStation(String physicalStation);
 }
